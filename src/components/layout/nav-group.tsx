@@ -38,15 +38,29 @@ export function NavGroup({ title, items }: NavGroup) {
         {items.map((item) => {
           const key = `${item.title}-${item.url}`
 
-          if (!item.items)
-            return <SidebarMenuLink key={key} item={item} href={href} />
-
-          if (state === 'collapsed')
+          if (!('items' in item)) {
             return (
-              <SidebarMenuCollapsedDropdown key={key} item={item} href={href} />
+              <SidebarMenuLink key={key} item={item as NavLink} href={href} />
             )
+          }
 
-          return <SidebarMenuCollapsible key={key} item={item} href={href} />
+          if (state === 'collapsed') {
+            return (
+              <SidebarMenuCollapsedDropdown
+                key={key}
+                item={item as NavCollapsible}
+                href={href}
+              />
+            )
+          }
+
+          return (
+            <SidebarMenuCollapsible
+              key={key}
+              item={item as NavCollapsible}
+              href={href}
+            />
+          )
         })}
       </SidebarMenu>
     </SidebarGroup>
