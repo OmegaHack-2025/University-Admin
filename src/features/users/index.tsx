@@ -12,7 +12,7 @@ import { userListSchema } from './data/schema'
 import { users } from './data/users'
 
 export default function Users() {
-  // Parse user list
+  // Procesar lista de usuarios
   const userList = userListSchema.parse(users)
 
   return (
@@ -28,9 +28,11 @@ export default function Users() {
       <Main>
         <div className='mb-2 flex flex-wrap items-center justify-between space-y-2'>
           <div>
-            <h2 className='text-2xl font-bold tracking-tight'>User List</h2>
+            <h2 className='text-2xl font-bold tracking-tight'>
+              Lista de Estudiantes
+            </h2>
             <p className='text-muted-foreground'>
-              Manage your users and their roles here.
+              Gestiona tus estudiantes y sus roles aquí.
             </p>
           </div>
           <UsersPrimaryButtons />
